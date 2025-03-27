@@ -23,5 +23,5 @@ jobs:
         with:
           push: true
           tags: |
-            ghcr.io/stealthinu/${{ github.repository }}:latest
-            ghcr.io/stealthinu/${{ github.repository }}:${{ github.ref_name }} 
+            ghcr.io/${{ github.repository }}:latest
+            ghcr.io/${{ github.repository }}:${{ github.ref_name }} 
