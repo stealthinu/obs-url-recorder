@@ -1,7 +1,11 @@
 FROM ubuntu:22.04
 
-ENV DEBIAN_FRONTEND=noninteractive
-ENV TZ=Asia/Tokyo
+ENV DEBIAN_FRONTEND=noninteractive \
+    TZ=Asia/Tokyo \
+    DISPLAY=:99 \
+    PULSE_SERVER=unix:/tmp/pulseaudio.socket \
+    HOME=/home/obsuser \
+    XDG_RUNTIME_DIR=/home/obsuser/xdg
 
 RUN apt-get update && apt-get install -y \
     xvfb \
@@ -26,11 +30,6 @@ RUN chown -R obsuser:obsuser /home/obsuser/.config
 
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
-
-ENV DISPLAY=:99
-ENV PULSE_SERVER=unix:/tmp/pulseaudio.socket
-ENV HOME=/home/obsuser
-ENV XDG_RUNTIME_DIR=/home/obsuser/xdg
 
 USER obsuser
 CMD ["/start.sh"]
