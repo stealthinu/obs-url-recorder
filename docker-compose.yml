@@ -1,0 +1,10 @@
+version: '3'
+services:
+  obs:
+    build: .
+    environment:
+      - OBS_BROWSER_URL=https://www.youtube.com/shorts/9KaytlBoqM4 # ここでURLを指定できる！
+    ports:
+      - "5900:5900"  # VNCポートをマッピング！
+    volumes:
+      - ./output:/home/obsuser/output  # 録画の出力先 
