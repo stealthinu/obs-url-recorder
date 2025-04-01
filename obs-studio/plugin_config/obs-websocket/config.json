@@ -1,8 +1,8 @@
 {
+  "server_password": "{OBS_WEBSOCKET_PASSWORD}",
+  "server_port": {OBS_WEBSOCKET_PORT},
   "alerts_enabled": false,
   "auth_required": true,
   "first_load": false,
-  "server_enabled": true,
-  "server_password": "obswebsocket",
-  "server_port": 4455
+  "server_enabled": true
 }

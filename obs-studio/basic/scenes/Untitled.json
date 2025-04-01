@@ -87,7 +87,7 @@
             "id": "browser_source",
             "versioned_id": "browser_source",
             "settings": {
-                "url": "https://www.youtube.com/shorts/9KaytlBoqM4",
+                "url": "{OBS_BROWSER_URL}",
                 "width": 1280,
                 "height": 720,
                 "reroute_audio": true
