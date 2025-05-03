@@ -4,7 +4,8 @@ services:
     build: .
     image: obs-url-recorder
     environment:
-      - OBS_BROWSER_URL=https://www.youtube.com/shorts/9KaytlBoqM4
+      #- OBS_BROWSER_URL=https://www.youtube.com/shorts/9KaytlBoqM4
+      - OBS_BROWSER_URL=https://obsproject.com/browser-source
     ports:
       - "5900:5900"  # VNCポート
     volumes:

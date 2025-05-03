@@ -4,6 +4,10 @@
 mkdir -p ${XDG_RUNTIME_DIR}
 chmod 700 ${XDG_RUNTIME_DIR}
 
+# 画面解像度設定（デフォルト：1280x720）
+SCREEN_WIDTH=${SCREEN_WIDTH:-1280}
+SCREEN_HEIGHT=${SCREEN_HEIGHT:-720}
+
 # 環境変数の設定とバリデーション
 OBS_BROWSER_URL=${OBS_BROWSER_URL:-"https://obsproject.com/browser-source"}
 OBS_WEBSOCKET_PORT=${OBS_WEBSOCKET_PORT:-"4455"}
@@ -35,8 +39,19 @@ sed -i "s|{OBS_WEBSOCKET_PASSWORD}|${OBS_WEBSOCKET_PASSWORD}|g" "${WEBSOCKET_CON
 
 # DBUS Xvfb
 dbus-daemon --session --address=unix:path=/tmp/dbus.sock &
-Xvfb :99 -screen 0 1280x720x24 &
+Xvfb :99 -screen 0 ${SCREEN_WIDTH}x${SCREEN_HEIGHT}x24 &
 sleep 1
+
+# ~/.fluxbox ディレクトリ作成
+mkdir -p /home/obsuser/.fluxbox
+
+# OBS を自動最大化させるルール書き込み
+cat >/home/obsuser/.fluxbox/apps <<'EOF'
+[app] (name=obs)
+  [Maximized] {yes}
+[end]
+EOF
+chown obsuser:obsuser /home/obsuser/.fluxbox/apps
 
 # Fluxbox
 fluxbox &
