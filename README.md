@@ -40,17 +40,45 @@ docker compose build
 docker compose up
 ```
 
-### 環境変数の設定
+### dockerの設定
 
-`docker-compose.yml` ファイルで以下の環境変数をカスタマイズできます:
+`docker-compose.yml` ファイルで以下の変数でカスタマイズできます:
 
-- `OBS_BROWSER_URL`: 録画する Web ページの URL を指定します。
+#### OBS_BROWSER_URL
+
+録画する Web ページの URL を指定します。
 
 例:
 
 ```yaml
 environment:
   - OBS_BROWSER_URL=https://example.com
+```
+
+#### shm_size
+
+録画する対象に動画が含まれている場合など、shm_sizeを大きく設定しておく必要があります。
+
+例:
+
+```yaml
+shm_size: 2gb
+```
+
+#### docker-compose 設定例
+
+```yaml
+  obs:
+    image: ghcr.io/stealthinu/obs-url-recorder:master
+    environment:
+      OBS_BROWSER_URL: http://aituber:3000/?slide=demo&autoplay=true
+    shm_size: 2gb
+    ports:
+      - "5900:5900"  # VNC port
+      - "4455:4455"  # OBS websocket port
+    volumes:
+      - ./data:/data
+      - ./output:/home/obsuser/output
 ```
 
 ### VNC 接続
