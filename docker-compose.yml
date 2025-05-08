@@ -6,6 +6,10 @@ services:
     environment:
       #- OBS_BROWSER_URL=https://www.youtube.com/shorts/9KaytlBoqM4
       - OBS_BROWSER_URL=https://obsproject.com/browser-source
+      # 解像度＆FPSをカスタマイズしたい場合は下記を編集してね☆
+      - SCREEN_WIDTH=1280
+      - SCREEN_HEIGHT=720
+      - SCREEN_FPS=30
     ports:
       - "5900:5900"  # VNCポート
     volumes:

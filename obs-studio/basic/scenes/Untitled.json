@@ -88,8 +88,9 @@
             "versioned_id": "browser_source",
             "settings": {
                 "url": "{OBS_BROWSER_URL}",
-                "width": 1280,
-                "height": 720,
+                "width": "{SCREEN_WIDTH}",
+                "height": "{SCREEN_HEIGHT}",
+                "fps": "{SCREEN_FPS}",
                 "reroute_audio": true
             },
             "mixers": 255,
@@ -171,7 +172,7 @@
         }
     },
     "resolution": {
-        "x": 1280,
-        "y": 720
+        "x": "{SCREEN_WIDTH}",
+        "y": "{SCREEN_HEIGHT}"
     }
 }
