@@ -10,6 +10,9 @@ SCREEN_HEIGHT=${SCREEN_HEIGHT:-720}
 # フレームレート設定（デフォルト：30fps）
 SCREEN_FPS=${SCREEN_FPS:-30}
 
+# 録画フォーマット設定（デフォルト：mp4）
+REC_FORMAT=${REC_FORMAT:-mp4}
+
 # 環境変数の設定とバリデーション
 OBS_BROWSER_URL=${OBS_BROWSER_URL:-"https://obsproject.com/browser-source"}
 OBS_WEBSOCKET_PORT=${OBS_WEBSOCKET_PORT:-"4455"}
@@ -56,6 +59,7 @@ sed -i "s|\"{SCREEN_FPS}\"|${SCREEN_FPS}|g" "${SCENE_FILE}"
 sed -i "s|{SCREEN_WIDTH}|${SCREEN_WIDTH}|g" "${BASIC_INI_FILE}"
 sed -i "s|{SCREEN_HEIGHT}|${SCREEN_HEIGHT}|g" "${BASIC_INI_FILE}"
 sed -i "s|{SCREEN_FPS}|${SCREEN_FPS}|g" "${BASIC_INI_FILE}"
+sed -i "s|{REC_FORMAT}|${REC_FORMAT}|g" "${BASIC_INI_FILE}"
 # OBS WebSocket プレースホルダー
 sed -i "s|{OBS_WEBSOCKET_PORT}|${OBS_WEBSOCKET_PORT}|g" "${WEBSOCKET_CONFIG_FILE}"
 sed -i "s|{OBS_WEBSOCKET_PASSWORD}|${OBS_WEBSOCKET_PASSWORD}|g" "${WEBSOCKET_CONFIG_FILE}"

@@ -55,6 +55,38 @@ environment:
   - OBS_BROWSER_URL=https://example.com
 ```
 
+#### SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_FPS
+
+録画・表示する仮想画面の解像度やフレームレートを環境変数で指定できます。
+
+- `SCREEN_WIDTH` : 画面の横幅（ピクセル）デフォルト `1280`
+- `SCREEN_HEIGHT`: 画面の縦幅（ピクセル）デフォルト `720`
+- `SCREEN_FPS`   : フレームレート（fps）デフォルト `30`
+- `REC_FORMAT`   : 録画ファイルのフォーマット デフォルト `mp4`
+
+#### REC_FORMAT
+
+録画ファイルのフォーマットを指定できます。
+デフォルトは `mp4` です。
+（`mkv` なども指定可能）
+
+例:
+
+```yaml
+environment:
+  - REC_FORMAT=mp4
+```
+
+例:
+
+```yaml
+environment:
+  - SCREEN_WIDTH=1920
+  - SCREEN_HEIGHT=1080
+  - SCREEN_FPS=60
+  - REC_FORMAT=mp4
+```
+
 #### shm_size
 
 録画する対象に動画が含まれている場合など、shm_sizeを大きく設定しておく必要があります。
@@ -72,6 +104,10 @@ shm_size: 2gb
     image: ghcr.io/stealthinu/obs-url-recorder:master
     environment:
       OBS_BROWSER_URL: http://aituber:3000/?slide=demo&autoplay=true
+      SCREEN_WIDTH: 1920
+      SCREEN_HEIGHT: 1080
+      SCREEN_FPS: 60
+      REC_FORMAT: mp4
     shm_size: 2gb
     ports:
       - "5900:5900"  # VNC port
